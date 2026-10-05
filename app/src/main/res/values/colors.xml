@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2E7D32</color>
+    <color name="colorPrimaryDark">#1B5E20</color>
+    <color name="colorAccent">#FF8F00</color>
+    <color name="navbar_background">#1B3B2B</color>
+    <color name="toolbar_background">#E8F5E9</color>
+    <color name="dialog_button_color">#2E7D32</color>
+    <color name="system_red">#D32F2F</color>
+    <color name="system_blue">#1565C0</color>
+    <color name="system_green">#2E7D32</color>
+    <color name="system_orange">#EF6C00</color>
+    <color name="system_transparent">#00000000</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="screen_background">#F5F7F5</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#616161</color>
+    <color name="expiring_soon_bg">#FFF3E0</color>
+</resources>
