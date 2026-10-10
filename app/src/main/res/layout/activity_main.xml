@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_background"
+    tools:context=".MainActivity">
+
+    <!-- Top Toolbar with Edit ToggleButton and Save Button (Listing 4.6 pattern) -->
+    <LinearLayout
+        android:id="@+id/toolbarMain"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbar_background"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ToggleButton
+            android:id="@+id/toggleButtonEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:checked="true"
+            android:textOff="View Mode"
+            android:textOn="Edit Mode" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="Save"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <!-- Scrollable Data Entry Form (Listing 4.2 pattern) -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/navbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarMain">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textFormHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pantry Ingredient Details"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/screen_title_size"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Ingredient Name -->
+            <TextView
+                android:id="@+id/textLabelName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Ingredient Name: *"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textFormHeader" />
+
+            <EditText
+                android:id="@+id/editIngredientName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:ems="16"
+                android:hint="e.g. Tomatoes, Eggs, Rice, Milk"
+                android:imeOptions="actionNext"
+                android:inputType="textCapWords"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textLabelName">
+                <requestFocus />
+            </EditText>
+
+            <!-- Quantity and Unit on the same row -->
+            <TextView
+                android:id="@+id/textLabelQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Quantity: *"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editIngredientName" />
+
+            <TextView
+                android:id="@+id/textLabelUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="Unit of Measure:"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/textLabelQuantity"
+                app:layout_constraintStart_toEndOf="@+id/editQuantity" />
+
+            <EditText
+                android:id="@+id/editQuantity"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:ems="8"
+                android:hint="e.g. 500 or 4"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textLabelQuantity" />
+
+            <Spinner
+                android:id="@+id/spinnerUnit"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:entries="@array/units_array"
+                app:layout_constraintBottom_toBottomOf="@+id/editQuantity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/editQuantity"
+                app:layout_constraintTop_toTopOf="@+id/editQuantity" />
+
+            <!-- Category -->
+            <TextView
+                android:id="@+id/textLabelCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Pantry Category:"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editQuantity" />
+
+            <Spinner
+                android:id="@+id/spinnerCategory"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp"
+                android:entries="@array/categories_array"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textLabelCategory" />
+
+            <!-- Expiry Date (DialogFragment trigger - Table 4.4 pattern) -->
+            <TextView
+                android:id="@+id/textLabelExpiry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Expiry Date:"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerCategory" />
+
+            <TextView
+                android:id="@+id/textExpiryDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
+                android:text="25/10/2026"
+                android:textColor="@color/system_blue"
+                android:textSize="@dimen/text_size_medium"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/textLabelExpiry"
+                app:layout_constraintStart_toEndOf="@+id/textLabelExpiry" />
+
+            <Button
+                android:id="@+id/btnChangeExpiry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Change"
+                app:layout_constraintBaseline_toBaselineOf="@+id/textExpiryDate"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/textValidationHelper"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="* Required fields. Singular/plural names (e.g., tomato vs tomatoes) and metric units (g/kg, ml/L) are automatically normalized during recipe matching."
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_size_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnChangeExpiry" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation Bar -->
+    <LinearLayout
+        android:id="@+id/navbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/navbar_background"
+        android:orientation="horizontal"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/imageButtonPantry"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@color/system_transparent"
+            android:contentDescription="@string/nav_pantry_desc"
+            android:src="@drawable/ic_nav_pantry" />
+
+        <ImageButton
+            android:id="@+id/imageButtonAdd"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@color/system_transparent"
+            android:contentDescription="@string/nav_add_desc"
+            android:src="@drawable/ic_nav_add" />
+
+        <ImageButton
+            android:id="@+id/imageButtonRecipes"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@color/system_transparent"
+            android:contentDescription="@string/nav_recipes_desc"
+            android:src="@drawable/ic_nav_recipes" />
+
+        <ImageButton
+            android:id="@+id/imageButtonSettings"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@color/system_transparent"
+            android:contentDescription="@string/nav_settings_desc"
+            android:src="@drawable/ic_nav_settings" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
