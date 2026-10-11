@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardIngredientItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="6dp"
+    android:background="@color/card_background"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/textIngredientName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Roma Tomatoes"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/text_size_large"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/textQuantityUnit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textQuantityUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="4 pcs"
+        android:textColor="@color/system_blue"
+        android:textSize="@dimen/text_size_medium"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textIngredientName"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDeleteIngredient" />
+
+    <TextView
+        android:id="@+id/textCategoryExpiry"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Category: Vegetables  |  Expires: 22/10/2026"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDeleteIngredient"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textIngredientName" />
+
+    <Button
+        android:id="@+id/buttonDeleteIngredient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/system_transparent"
+        android:text="DELETE"
+        android:textColor="@color/system_red"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
