@@ -103,7 +103,10 @@ public class RecipeMatcher {
             return word;
         }
         // Special keep for "baked beans" or "beans" -> singularize to "bean" unless mapped
-        // TODO: handle -oes plural endings like tomatoes and potatoes
+        if (word.endsWith("oes") && word.length() > 4) {
+            // e.g. tomatoes -> tomato, potatoes -> potato
+            return word.substring(0, word.length() - 2);
+        }
         if (word.endsWith("ies") && word.length() > 4) {
             // e.g. berries -> berry
             return word.substring(0, word.length() - 3) + "y";
