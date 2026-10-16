@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_pantry_settings"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_background"
+    tools:context=".PantrySettingsActivity">
+
+    <ScrollView
+        android:id="@+id/scrollViewSettings"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/navbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textSettingsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pantry &amp; Recipe Preferences"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/screen_title_size"
+                android:textStyle="bold" />
+
+            <!-- Sort Pantry Items By (RadioGroup - Listing 5.1 pattern) -->
+            <TextView
+                android:id="@+id/textSortByLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Sort Pantry Items By:"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_size_medium"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupSortBy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp">
+
+                <RadioButton
+                    android:id="@+id/radioSortName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ingredient Name" />
+
+                <RadioButton
+                    android:id="@+id/radioSortExpiry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expiry Date (Soonest First)" />
+
+                <RadioButton
+                    android:id="@+id/radioSortCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pantry Category" />
+            </RadioGroup>
+
+            <!-- Sort Order (RadioGroup) -->
+            <TextView
+                android:id="@+id/textSortOrderLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Sort Order:"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_size_medium"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupSortOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp">
+
+                <RadioButton
+                    android:id="@+id/radioAscending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ascending (A to Z / Earliest)" />
+
+                <RadioButton
+                    android:id="@+id/radioDescending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descending (Z to A / Latest)" />
+            </RadioGroup>
+
+            <!-- Expiring-Soon Alert Toggle -->
+            <TextView
+                android:id="@+id/textAlertsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Food Waste &amp; Expiry Alerts:"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_size_medium"
+                android:textStyle="bold" />
+
+            <Switch
+                android:id="@+id/switchExpiryAlerts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:checked="true"
+                android:text="Highlight items expiring within 3 days" />
+
+            <!-- Unit Display Preference -->
+            <TextView
+                android:id="@+id/textUnitsPrefLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Default Measurement System:"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_size_medium"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupUnits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp">
+
+                <RadioButton
+                    android:id="@+id/radioMetric"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Metric Standard (g, kg, ml, L)" />
+
+                <RadioButton
+                    android:id="@+id/radioKitchen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kitchen Measures (cups, tbsp, tsp)" />
+            </RadioGroup>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation Bar -->
+    <LinearLayout
+        android:id="@+id/navbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/navbar_background"
+        android:orientation="horizontal"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/imageButtonPantry"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@color/system_transparent"
+            android:contentDescription="@string/nav_pantry_desc"
+            android:src="@drawable/ic_nav_pantry" />
+
+        <ImageButton
+            android:id="@+id/imageButtonAdd"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@color/system_transparent"
+            android:contentDescription="@string/nav_add_desc"
+            android:src="@drawable/ic_nav_add" />
+
+        <ImageButton
+            android:id="@+id/imageButtonRecipes"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@color/system_transparent"
+            android:contentDescription="@string/nav_recipes_desc"
+            android:src="@drawable/ic_nav_recipes" />
+
+        <ImageButton
+            android:id="@+id/imageButtonSettings"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@color/system_transparent"
+            android:contentDescription="@string/nav_settings_desc"
+            android:src="@drawable/ic_nav_settings" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
