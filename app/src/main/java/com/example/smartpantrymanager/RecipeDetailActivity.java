@@ -78,19 +78,16 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
             if (hasEnough) {
                 ingBuilder.append("✓  ").append(req.getFormattedRequirement())
-                        .append(String.format("  (In Pantry: %.0f %s)
-", availInReqUnit, req.getRequiredUnit()));
+                        .append(String.format("  (In Pantry: %.0f %s)\n", availInReqUnit, req.getRequiredUnit()));
             } else {
                 missingCount++;
                 ingBuilder.append("✗  ").append(req.getFormattedRequirement())
-                        .append(String.format("  (Missing - Have: %.0f %s)
-", availInReqUnit, req.getRequiredUnit()));
+                        .append(String.format("  (Missing - Have: %.0f %s)\n", availInReqUnit, req.getRequiredUnit()));
             }
         }
 
         tvIngredients.setText(ingBuilder.toString().trim());
-        tvSteps.setText(currentRecipe.getInstructions().replace("\n", "
-"));
+        tvSteps.setText(currentRecipe.getInstructions().replace("\\n", "\n"));
 
         if (missingCount == 0) {
             canCookStrictly = true;

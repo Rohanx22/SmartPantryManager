@@ -68,8 +68,8 @@ public class RecipeMatcher {
             return "";
         }
         String cleaned = rawName.toLowerCase(Locale.ROOT)
-                .replaceAll("[^a-z0-9\s]", " ")
-                .replaceAll("\s+", " ")
+                .replaceAll("[^a-z0-9 ]", " ")
+                .replaceAll(" +", " ")
                 .trim();
 
         if (cleaned.isEmpty()) {
